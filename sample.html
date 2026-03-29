@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typeless Pricing</title>
+  <style>
+    :root{--bg:#fff;--panel:#fafafa;--line:#ececec;--text:#111;--muted:#6f6f73;--soft:#a0a1a7;--accent:#1f5cf2;--accent2:#5483f5;--pro-bg:#f7f7ff;--pro-border:#9fb8ff;--radius:24px;--container:1280px;--table-min:980px;color-scheme:light}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}a{color:inherit;text-decoration:none}button{font:inherit}
+    .container{width:min(var(--container),calc(100% - 48px));margin:0 auto}
+    .brand{display:inline-flex;align-items:center;gap:14px}.brand__text{font-size:32px;font-weight:700;line-height:1;letter-spacing:-.04em}.brand__mark{width:34px;height:34px;display:inline-flex}
+    .avatar{width:44px;height:44px;border:0;border-radius:50%;background:#ececec;color:#66717a;display:grid;place-items:center;font-size:22px;font-weight:600}
+    .site-header{padding:30px 0 82px}.site-header__row{display:flex;justify-content:space-between;align-items:center;gap:24px}
+    .hero{text-align:center;padding-bottom:110px}.hero h1{margin:0 auto;max-width:1080px;font-size:clamp(52px,6.7vw,84px);line-height:1.03;font-weight:500;letter-spacing:-.055em}
+    .pricing{padding-bottom:122px}.pricing__grid{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .plan{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:30px 30px 28px}.plan--pro{background:linear-gradient(180deg,var(--pro-bg),#fafaff);border-color:var(--pro-border);box-shadow:0 0 0 1px rgba(31,92,242,.08)}
+    .plan__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}.plan__title{margin:0;font-size:clamp(42px,4vw,60px);line-height:.98;font-weight:500;letter-spacing:-.05em}.plan__badge{margin-top:8px;padding:9px 16px;border-radius:999px;background:#eef2ff;color:var(--accent2);font-size:14px;font-weight:600;white-space:nowrap}
+    .plan__eyebrow{margin:0 0 26px;color:#424349;font-size:16px;font-weight:500}.price{display:flex;align-items:flex-end;gap:8px;margin-bottom:10px}.price__amount{font-size:clamp(54px,5vw,72px);line-height:.88;font-weight:500;letter-spacing:-.055em}.price__currency{font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-.04em;margin-bottom:8px}
+    .plan__meta,.plan__submeta{margin:0;font-size:16px;line-height:1.35;color:#53545b}.plan__submeta{margin-top:8px}.plan__submeta strong{color:#202026}
+    .plan__cta{width:100%;height:52px;margin:30px 0 28px;border:0;border-radius:999px;display:grid;place-items:center;font-size:18px;font-weight:700;letter-spacing:-.02em}.plan__cta--primary{background:var(--accent);color:#fff}.plan__cta--ghost{background:#f8f8f8;color:#cbcbcb}
+    .plan__label{margin:0 0 16px;font-size:16px;line-height:1.3;font-weight:700;color:#191a1f}.list{list-style:none;margin:0;padding:0;display:grid;gap:12px}.list li{display:flex;align-items:center;gap:10px;min-height:24px;color:#272932;font-size:16px;line-height:1.35;font-weight:500}
+    .title{margin:0 0 44px;text-align:center;font-size:clamp(36px,4vw,54px);line-height:1.06;font-weight:600;letter-spacing:-.045em}
+    .status{position:relative;display:inline-block;width:20px;height:20px;border:2px solid currentColor;border-radius:50%;color:var(--accent2);vertical-align:middle;flex:0 0 auto}
+    .status::after{content:"";position:absolute;left:5px;top:2px;width:5px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}.status--gray{color:#a5a5a9}.status--dash{width:auto;height:auto;border:0;color:#9d9ea4}.status--dash::after{content:"–";position:static;border:0;transform:none;font-size:20px;font-weight:600}
+    .comparison{padding-bottom:96px}.comparison__scroller{overflow:auto;padding-bottom:10px}.table{width:100%;min-width:var(--table-min);border-collapse:separate;border-spacing:0;table-layout:fixed}.table col:first-child{width:35%}.table col:nth-child(2),.table col:nth-child(3){width:32.5%}
+    .table thead th{padding:18px 22px 22px;text-align:center;font-size:18px;font-weight:600;color:#23242a;vertical-align:bottom}.table thead th:first-child{text-align:left}.table .pro-head{border:1px solid var(--line);border-bottom:0;border-top:8px solid var(--accent);border-radius:16px 16px 0 0;background:#fff}
+    .table tbody th{padding:18px 22px;text-align:left;font-size:16px;line-height:1.3;font-weight:600;color:#2e3037}.table tbody td{padding:18px 22px;text-align:center;vertical-align:middle;font-size:16px;line-height:1.3;color:#40424a}.table tbody td.pro{background:#fff;border-left:1px solid var(--line);border-right:1px solid var(--line)}.table tbody tr:last-child td.pro{border-bottom:1px solid var(--line);border-radius:0 0 16px 16px}
+    .table .section th{padding-top:34px;padding-bottom:14px;font-size:22px;line-height:1.15;font-weight:700;letter-spacing:-.035em;color:#111}.table .section td.pro{padding-top:34px}.table .muted{color:#8c8d94;font-weight:500}
+    .faq{padding:26px 0 112px}.faq__panel{background:var(--panel);padding:78px 0 0}.faq__inner{width:min(890px,calc(100% - 64px));margin:0 auto}.faq__title{margin:0 0 52px;text-align:center;font-size:clamp(38px,4vw,56px);line-height:1.05;font-weight:500;letter-spacing:-.05em}
+    .faq-item{border-bottom:1px solid #ebebeb}.faq-item__button{width:100%;padding:22px 0;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;gap:24px;text-align:left;color:#17181d;cursor:pointer}.faq-item__question{font-size:16px;line-height:1.3;font-weight:700;letter-spacing:-.015em}
+    .faq-item__chevron{position:relative;width:18px;height:18px;color:#8c8d94;flex:0 0 auto;transition:transform .16s ease}.faq-item__chevron::before{content:"";position:absolute;left:4px;top:3px;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}.faq-item.is-open .faq-item__chevron{transform:rotate(180deg)}
+    .faq-item__answer{display:none;padding:0 0 22px;color:#5b5d66;font-size:15px;line-height:1.6;max-width:72ch}.faq-item.is-open .faq-item__answer{display:block}
+    .footer-band{height:84px;background:#fafafa}.site-footer{padding:56px 0 140px}.footer-grid{display:grid;grid-template-columns:1.7fr repeat(4,1fr);gap:28px;align-items:start}.footer-brand .brand__text{font-size:38px}
+    .lang{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:8px 12px;border-radius:999px;background:#efefef;color:#6c6d74;font-size:12px;font-weight:600}.socials{display:flex;align-items:center;gap:10px;margin-top:18px}.social{width:30px;height:30px;border-radius:50%;border:1px solid #dfdfdf;background:#fff;color:#1a1b20;display:grid;place-items:center;font-size:12px;font-weight:700}
+    .legal{margin-top:18px;display:flex;flex-wrap:wrap;gap:16px;color:#a0a1a7;font-size:12px;line-height:1.5;font-weight:600}.footer-col__title{margin:0 0 18px;color:#a1a2a9;font-size:12px;line-height:1.4;font-weight:700}.footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}.footer-col li,.footer-col a{color:#6d6f76;font-size:12px;line-height:1.4;font-weight:600}
+    @media (max-width:1100px){.footer-grid{grid-template-columns:1.4fr repeat(2,1fr)}}
+    @media (max-width:900px){.container{width:min(var(--container),calc(100% - 32px))}.site-header{padding:22px 0 58px}.brand__text{font-size:28px}.avatar{width:40px;height:40px;font-size:18px}.hero{padding-bottom:72px}.pricing__grid{grid-template-columns:1fr;max-width:680px}.comparison{padding-bottom:72px}.faq{padding-bottom:84px}.faq__panel{padding-top:56px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:620px){.table{min-width:860px}.faq__inner{width:calc(100% - 36px)}.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a class="brand" href="#" aria-label="Typeless home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 8.5C16.2 8.5 22.5 14.8 22.5 23V31.5C14.3 31.5 8 25.2 8 17V8.5Z" fill="currentColor"/><path d="M23.5 9C30.6 11.7 35 18.1 35 25.5C35 28.4 34.3 31.1 32.8 33.5C30.9 24.4 25.7 17.7 18 13.5C19.4 11.2 21.2 9.7 23.5 9Z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand__text">Typeless</span>
+      </a>
+      <button class="avatar" type="button" aria-label="Profile">A</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero"><div class="container"><h1>Go Pro and save 1 day per week</h1></div></section>
+    <section class="pricing">
+      <div class="container">
+        <div class="pricing__grid">
+          <article class="plan plan--pro">
+            <div class="plan__head"><h2 class="plan__title">Pro</h2><span class="plan__badge">Most popular</span></div>
+            <p class="plan__eyebrow">For power users</p>
+            <div class="price"><span class="price__amount">$12</span><span class="price__currency">USD</span></div>
+            <p class="plan__meta">/ member / month, billed yearly</p>
+            <p class="plan__submeta"><strong>$30</strong> when billed monthly</p>
+            <button class="plan__cta plan__cta--primary" type="button">Get started</button>
+            <p class="plan__label">Everything in Free, plus:</p>
+            <ul class="list">
+              <li><span class="status" aria-hidden="true"></span><span>Unlimited words</span></li>
+              <li><span class="status" aria-hidden="true"></span><span>Team member management</span></li>
+              <li><span class="status" aria-hidden="true"></span><span>Prioritized feature requests</span></li>
+              <li><span class="status" aria-hidden="true"></span><span>Early access to new features</span></li>
+            </ul>
+          </article>
+          <article class="plan">
+            <div class="plan__head"><h2 class="plan__title">Free</h2></div>
+            <p class="plan__eyebrow">For beginners</p>
+            <div class="price"><span class="price__amount">$0</span><span class="price__currency">USD</span></div>
+            <p class="plan__meta">/ member / month</p>
+            <button class="plan__cta plan__cta--ghost" type="button" aria-current="page">Your current plan</button>
+            <ul class="list">
+              <li><span class="status status--gray" aria-hidden="true"></span><span>8,000 words per week</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Voice-to-perfect-text</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Translate</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Ask anything</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Personalized writing style and tone</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Personal dictionary</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Support for 100+ languages</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Different tones for each app</span></li>
+              <li><span class="status status--gray" aria-hidden="true"></span><span>Whisper mode</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="comparison">
+      <div class="container">
+        <h2 class="title">Plans &amp; features</h2>
+        <div class="comparison__scroller">
+          <table class="table" aria-label="Plans and features comparison">
+            <colgroup><col><col><col></colgroup>
+            <thead><tr><th></th><th class="pro-head">Pro</th><th>Free</th></tr></thead>
+            <tbody>
+              <tr class="section"><th scope="rowgroup">Effortless voice typing</th><td class="pro"></td><td></td></tr>
+              <tr><th scope="row">Word limit</th><td class="pro">Unlimited</td><td class="muted">8,000 per week</td></tr>
+              <tr><th scope="row">Voice-to-perfect-text</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Translate</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Ask anything</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Personalized writing style and tone</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Personal dictionary</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Support for 100+ languages</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Different tones for each app</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Whisper mode</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Team member management</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--dash" aria-label="Not included"></span></td></tr>
+              <tr><th scope="row">Prioritized feature requests</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--dash" aria-label="Not included"></span></td></tr>
+              <tr><th scope="row">Early access to new features</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--dash" aria-label="Not included"></span></td></tr>
+              <tr class="section"><th scope="rowgroup">Device &amp; platform</th><td class="pro"></td><td></td></tr>
+              <tr><th scope="row">Desktop (macOS)</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Desktop (Windows)</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Mobile (iOS)</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Mobile (Android)</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr class="section"><th scope="rowgroup">Security features</th><td class="pro"></td><td></td></tr>
+              <tr><th scope="row">Zero cloud data retention</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Never trained on your data</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">On-device history storage</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">Dictation history control</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">HIPAA compliant</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+              <tr><th scope="row">GDPR compliant</th><td class="pro"><span class="status" aria-label="Included"></span></td><td><span class="status status--gray" aria-label="Included"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="faq__panel">
+          <div class="faq__inner">
+            <h2 class="faq__title" id="faq-title">FAQ</h2>
+            <div class="faq-item"><button class="faq-item__button" type="button" aria-expanded="false"><span class="faq-item__question">How do I upgrade?</span><span class="faq-item__chevron" aria-hidden="true"></span></button><div class="faq-item__answer">Open billing settings and switch from the free plan to Pro. Your workspace stays intact.</div></div>
+            <div class="faq-item"><button class="faq-item__button" type="button" aria-expanded="false"><span class="faq-item__question">Is there a free trial or free plan available?</span><span class="faq-item__chevron" aria-hidden="true"></span></button><div class="faq-item__answer">Yes. The free plan includes the weekly word allowance and the core assistant features shown above.</div></div>
+            <div class="faq-item"><button class="faq-item__button" type="button" aria-expanded="false"><span class="faq-item__question">How do I cancel my paid plan?</span><span class="faq-item__chevron" aria-hidden="true"></span></button><div class="faq-item__answer">You can cancel from billing settings at any time. Access continues until the current billing period ends.</div></div>
+            <div class="faq-item"><button class="faq-item__button" type="button" aria-expanded="false"><span class="faq-item__question">What forms of payment do you accept?</span><span class="faq-item__chevron" aria-hidden="true"></span></button><div class="faq-item__answer">Major credit and debit cards are typically supported for self-serve subscriptions.</div></div>
+            <div class="faq-item"><button class="faq-item__button" type="button" aria-expanded="false"><span class="faq-item__question">Does Typeless offer team plans?</span><span class="faq-item__chevron" aria-hidden="true"></span></button><div class="faq-item__answer">Yes. Team support is reflected by the Pro-only management features and can be expanded further.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="footer-band" aria-hidden="true"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#" aria-label="Typeless home">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 40 40" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 8.5C16.2 8.5 22.5 14.8 22.5 23V31.5C14.3 31.5 8 25.2 8 17V8.5Z" fill="currentColor"/><path d="M23.5 9C30.6 11.7 35 18.1 35 25.5C35 28.4 34.3 31.1 32.8 33.5C30.9 24.4 25.7 17.7 18 13.5C19.4 11.2 21.2 9.7 23.5 9Z" fill="currentColor"/></svg>
+            </span>
+            <span class="brand__text">Typeless</span>
+          </a>
+          <div class="lang"><span aria-hidden="true">◉</span><span>English (US)</span></div>
+          <div class="socials" aria-label="Social links">
+            <a class="social" href="#" aria-label="X">X</a>
+            <a class="social" href="#" aria-label="LinkedIn">in</a>
+            <a class="social" href="#" aria-label="YouTube">▶</a>
+            <a class="social" href="#" aria-label="Instagram">◎</a>
+            <a class="social" href="#" aria-label="TikTok">♪</a>
+          </div>
+          <div class="legal"><span>&copy; 2026 Typeless</span><a href="#">Terms of Service</a><a href="#">Privacy Policy</a></div>
+        </div>
+        <nav class="footer-col" aria-label="Security links"><h2 class="footer-col__title">Security</h2><ul><li><a href="#">Trust center</a></li><li><a href="#">Subprocessors</a></li><li><a href="#">Data controls</a></li><li><a href="#">Cookies</a></li><li><a href="#">DPA</a></li></ul></nav>
+        <nav class="footer-col" aria-label="Company links"><h2 class="footer-col__title">Company</h2><ul><li><a href="#">Manifesto</a></li><li><a href="#">About</a></li></ul></nav>
+        <nav class="footer-col" aria-label="Products links"><h2 class="footer-col__title">Products</h2><ul><li><a href="#">Release notes</a></li><li><a href="#">Use cases</a></li><li><a href="#">Pricing</a></li><li><a href="#">Help center</a></li></ul></nav>
+        <nav class="footer-col" aria-label="Resources links"><h2 class="footer-col__title">Resources</h2><ul><li><a href="#">Affiliate program</a></li><li><a href="#">Referral program</a></li><li><a href="#">Typeless for students</a></li><li><a href="#">Gift card</a></li><li><a href="#">Contact us</a></li></ul></nav>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const items = [...document.querySelectorAll('.faq-item')];
+      items.forEach((item) => {
+        const button = item.querySelector('.faq-item__button');
+        button.addEventListener('click', () => {
+          const open = !item.classList.contains('is-open');
+          items.forEach((other) => {
+            other.classList.remove('is-open');
+            other.querySelector('.faq-item__button').setAttribute('aria-expanded', 'false');
+          });
+          if (open) {
+            item.classList.add('is-open');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

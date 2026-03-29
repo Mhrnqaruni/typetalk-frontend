@@ -1,0 +1,97 @@
+.app-marquee-outer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  /* Fade edges left & right */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  margin: 0 -24px; /* bleed past container padding */
+}
+
+/* Each row is a viewport-wide sliding strip */
+.marquee-row {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+
+.marquee-row--reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause on hover for accessibility */
+.app-marquee-outer:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Individual icon */
+.marquee-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.marquee-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback when image 404s */
+.marquee-icon--fallback {
+  background: #e5e7eb;
+  font-size: 12px;
+  font-weight: 700;
+  color: #666;
+}
+
+.marquee-icon--fallback::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .marquee-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+  }
+}

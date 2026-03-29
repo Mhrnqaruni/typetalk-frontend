@@ -1,0 +1,376 @@
+:root {
+  --bg: #ffffff;
+  --panel: #f9f9f9;
+  --line: rgba(119, 119, 119, 0.15);
+  --text: rgba(17, 17, 17, 1);
+  --muted: rgba(17, 17, 17, 0.5);
+  --soft: #a0a1a7;
+  --accent: #1f5df2;
+  --accent2: #5483f5;
+  --pro-bg: #f7f7ff;
+  --pro-border: #1f5df2;
+  --radius: 24px;
+  --container: 1280px;
+  --table-min: 980px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "SF Pro Display", "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ── Container ── */
+.container {
+  width: min(var(--container), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ── Brand / Logo ── */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand__text {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.brand__mark {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+/* ── Avatar ── */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #ececec;
+  color: #66717a;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── Site Header ── */
+.site-header {
+  padding: 22px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 22px;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-header__nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+  transition: color 0.15s;
+}
+
+.site-header__nav a:hover {
+  color: #111;
+}
+
+.site-header__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Status icon (checkmark) ── */
+.status {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  color: var(--accent2);
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+.status::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.status--gray {
+  color: #a5a5a9;
+}
+
+.status--dash {
+  width: auto;
+  height: auto;
+  border: 0;
+  color: #9d9ea4;
+}
+
+.status--dash::after {
+  content: "–";
+  position: static;
+  border: 0;
+  transform: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ── Footer ── */
+.footer-band {
+  height: 84px;
+  background: #fafafa;
+}
+
+.site-footer {
+  background: #fafafa;
+  padding: 56px 0 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.7fr repeat(4, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.footer-brand .brand__text {
+  font-size: 28px;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #efefef;
+  color: #6c6d74;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.social {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #dfdfdf;
+  background: #fff;
+  color: #1a1b20;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.social:hover {
+  background: #f0f0f0;
+  border-color: #ccc;
+}
+
+.social svg {
+  width: 14px;
+  height: 14px;
+}
+
+.legal {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #a0a1a7;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.legal a:hover {
+  color: #666;
+}
+
+.footer-col__title {
+  margin: 0 0 18px;
+  color: #a1a2a9;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.footer-col li a {
+  color: #6d6f76;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.footer-col li a:hover {
+  color: #111;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: min(var(--container), calc(100% - 32px));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ═══════════════════════════════════════
+   WAVEFORM ANIMATED ICON
+═══════════════════════════════════════ */
+.waveform {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.waveform--sm { gap: 2px; }
+.waveform--md { gap: 3px; }
+
+.waveform__bar {
+  display: block;
+  width: 3px;
+  border-radius: 99px;
+  background: currentColor;
+  animation: waveform-pulse 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes waveform-pulse {
+  0%   { transform: scaleY(0.4); opacity: 0.5; }
+  100% { transform: scaleY(1);   opacity: 1; }
+}
+
+/* ═══════════════════════════════════════
+   PAGE TRANSITION FADE
+═══════════════════════════════════════ */
+main {
+  animation: page-fade 0.2s ease;
+}
+
+@keyframes page-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════
+   GLOBAL CARD HOVER LIFT
+═══════════════════════════════════════ */
+.feature-card {
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.09);
+  transform: translateY(-3px);
+}

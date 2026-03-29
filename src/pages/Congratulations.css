@@ -1,0 +1,305 @@
+.congrats-page {
+  padding: 60px 0 120px;
+  text-align: center;
+}
+
+.congrats-thanks {
+  font-size: 15px;
+  color: #888;
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.congrats-title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 64px;
+  color: #111;
+}
+
+.congrats-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 780px;
+  margin: 0 auto 40px;
+}
+
+.congrats-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.congrats-step__num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.congrats-step__visual {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.congrats-step__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+  margin: 0;
+}
+
+.congrats-step__desc strong {
+  color: #111;
+  font-weight: 700;
+}
+
+/* Browser mockup */
+.browser-mock {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.browser-mock__bar {
+  background: #f1f3f5;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 10px;
+}
+
+.browser-mock__controls {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.browser-mock__controls span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: block;
+}
+
+.browser-mock__url-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.browser-mock__addr {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 4px 10px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #999;
+  font-size: 11px;
+  max-width: 60%;
+}
+
+.browser-mock__actions {
+  display: flex;
+  gap: 8px;
+  color: #aaa;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.browser-mock__downloads {
+  padding: 10px 12px;
+}
+
+.browser-mock__download-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+
+.browser-mock__download-icon {
+  width: 22px;
+  height: 22px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.browser-mock__download-info {
+  flex: 1;
+}
+
+.browser-mock__download-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #111;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.browser-mock__download-actions {
+  font-size: 10px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.browser-mock__cursor {
+  font-size: 14px;
+  color: #333;
+}
+
+.browser-mock__see-more {
+  font-size: 11px;
+  color: #2563eb;
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+/* Installer mockup */
+.installer-mock {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.installer-mock__titlebar {
+  background: #f1f3f5;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
+}
+
+.installer-mock__logo-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.installer-mock__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.installer-mock__window-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.installer-mock__window-btns span {
+  width: 24px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  color: #666;
+  cursor: pointer;
+}
+
+.installer-mock__window-btns span:last-child:hover {
+  background: #e81123;
+  color: #fff;
+}
+
+.installer-mock__body {
+  padding: 28px 24px;
+}
+
+.installer-mock__spinner-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.installer-mock__spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.installer-mock__status {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+}
+
+.installer-mock__progress {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.installer-mock__progress-bar {
+  height: 100%;
+  width: 62%;
+  background: #2563eb;
+  border-radius: 999px;
+  animation: progress-fill 3s ease-in-out infinite;
+}
+
+@keyframes progress-fill {
+  0% { width: 20%; }
+  50% { width: 80%; }
+  100% { width: 20%; }
+}
+
+.congrats-retry {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.congrats-retry__link {
+  color: #111;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.congrats-retry__link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .congrats-steps {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}

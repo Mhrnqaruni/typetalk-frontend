@@ -1,0 +1,116 @@
+.manifesto-page {
+  padding: 64px 0 100px;
+}
+
+.manifesto-container {
+  max-width: 740px !important;
+}
+
+.manifesto-title {
+  font-size: clamp(32px, 6vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin: 0 0 44px;
+  color: var(--text);
+}
+
+/* Opening block quote */
+.manifesto-quote-block {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin: 0 0 48px;
+  border: none;
+}
+
+.manifesto-quote-block p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.manifesto-quote-block p:last-child { margin-bottom: 0; }
+
+/* Sections */
+.manifesto-section {
+  margin-bottom: 36px;
+}
+
+.manifesto-heading {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.manifesto-section p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #5d5d5d;
+  margin: 0 0 8px;
+}
+
+.manifesto-section p:last-child { margin-bottom: 0; }
+
+.manifesto-section em { font-style: italic; }
+
+/* Pull quote — 4px solid BLACK border, italic, larger text */
+.manifesto-pull-quote {
+  border-left: 4px solid #000;
+  padding: 4px 0 4px 20px;
+  margin: 0 0 48px;
+}
+
+.manifesto-pull-quote p {
+  font-size: clamp(18px, 2vw, 28px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #333;
+  margin: 0 0 8px;
+}
+
+.manifesto-pull-quote p:last-child { margin-bottom: 0; }
+
+.manifesto-pull-quote--closing {
+  margin-top: 40px;
+}
+
+/* Emphasis line */
+.manifesto-emphasis {
+  font-size: 17px !important;
+  font-weight: 600;
+  color: var(--text) !important;
+  line-height: 1.5 !important;
+}
+
+/* Highlights — CORRECT cyan-blue color */
+.manifesto-mark {
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-style: normal;
+}
+
+.manifesto-mark--blue {
+  background: #99ceff;
+  color: #0d0d0d;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .manifesto-quote-block {
+    padding: 20px 22px;
+  }
+
+  .manifesto-pull-quote {
+    padding-left: 16px;
+  }
+
+  .manifesto-pull-quote p {
+    font-size: 18px;
+  }
+}

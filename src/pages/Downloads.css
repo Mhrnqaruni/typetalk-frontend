@@ -1,0 +1,135 @@
+.downloads-page {
+  padding: 70px 0 100px;
+}
+
+.downloads-title {
+  text-align: center;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin: 0 0 56px;
+  color: #111;
+}
+
+.downloads-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.download-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 28px 28px 28px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.download-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.download-card__icon {
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.download-card__name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+
+.download-card__desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0 0 24px;
+}
+
+.download-card__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 24px;
+  height: 56px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s;
+  letter-spacing: -0.01em;
+}
+
+.download-btn--dark {
+  background: #111;
+  color: #fff;
+}
+
+.download-btn--dark:hover {
+  opacity: 0.85;
+}
+
+.download-btn--store {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.download-btn__small {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.download-btn__big {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.download-btn--store span {
+  text-align: left;
+}
+
+/* QR code */
+.qr-code {
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .downloads-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
+}

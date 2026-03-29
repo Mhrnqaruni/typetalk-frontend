@@ -1,0 +1,5 @@
+vercel cli is avialble, and vercel sandbox
+
+https://vercel.com/mehran-gharoonis-projects/typetalk
+
+Project ID: prj_OqZtv08WgSFbwo4tz9tCIU5SqA6R
