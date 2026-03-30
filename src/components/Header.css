@@ -53,6 +53,12 @@
   justify-self: end;
 }
 
+.header-link {
+  color: rgba(17, 17, 17, 0.72);
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .header-cta {
   display: inline-flex;
   align-items: center;
@@ -135,6 +141,10 @@
   padding: 16px !important;
   text-align: center !important;
   border-bottom: 0 !important;
+}
+
+.mobile-drawer__secondary {
+  margin-top: 16px;
 }
 
 /* Responsive breakpoints */

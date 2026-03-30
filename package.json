@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:deployed": "playwright test tests/auth.deployed.spec.js",
+    "test:e2e:deployed:phase9": "node scripts/run-phase9-deployed-smoke.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.0.1",
@@ -15,9 +20,15 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^25.0.1",
+    "vitest": "^3.2.4",
     "vite": "^5.4.8"
   }
 }

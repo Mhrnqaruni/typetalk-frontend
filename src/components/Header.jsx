@@ -1,20 +1,24 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { X, Menu } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 import Logo from './Logo'
 import './Header.css'
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const auth = useAuth()
+  const primaryAppLink = auth.isAuthenticated ? '/app' : '/login'
+  const primaryAppLabel = auth.isAuthenticated ? 'Open app' : 'Log in'
 
   return (
     <>
       <header className="site-header">
         <div className="container site-header__row">
           {/* Left: Logo */}
-          <Link className="brand" to="/" aria-label="Typeless home" onClick={() => setMobileOpen(false)}>
+          <Link className="brand" to="/" aria-label="TypeTalk home" onClick={() => setMobileOpen(false)}>
             <span className="brand__mark" aria-hidden="true"><Logo size={24} /></span>
-            <span className="brand__text">Typeless</span>
+            <span className="brand__text">TypeTalk</span>
           </Link>
 
           {/* Center: Nav (absolutely centered) */}
@@ -26,6 +30,9 @@ export default function Header() {
 
           {/* Right: CTA + Mobile toggle */}
           <div className="site-header__right">
+            <Link to={primaryAppLink} className="header-link" onClick={() => setMobileOpen(false)}>
+              {primaryAppLabel}
+            </Link>
             <Link to="/downloads" className="header-cta">
               Download for free
             </Link>
@@ -47,6 +54,9 @@ export default function Header() {
             <NavLink to="/manifesto" onClick={() => setMobileOpen(false)}>Manifesto</NavLink>
             <NavLink to="/pricing" onClick={() => setMobileOpen(false)}>Pricing</NavLink>
             <NavLink to="/about" onClick={() => setMobileOpen(false)}>About</NavLink>
+            <Link to={primaryAppLink} className="mobile-drawer__secondary" onClick={() => setMobileOpen(false)}>
+              {primaryAppLabel}
+            </Link>
             <Link to="/downloads" className="mobile-drawer__cta" onClick={() => setMobileOpen(false)}>
               Download for free
             </Link>
